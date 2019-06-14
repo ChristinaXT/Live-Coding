@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2018_08_07_175341) do
   create_table "heroines", force: :cascade do |t|
     t.string "name"
     t.string "super_name"
+    t.integer "power_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,13 +3,19 @@ class HeroinesController < ApplicationController
     @heroines = Heroine.all
   end
 
+  def show
+    @heroine = Heroine.find_by(id: params[:id])
+    @power = @heroine.power
+  end
+
   def new
     @heroine = Heroine.new
   end
 
   def create
     @heroine = Heroine.new(heroine_params)
-    if @heroine.save
+    if heroine.name.valid?
+      @heroine.save
       redirect_to heroines_path
     else
       render 'new'
@@ -19,6 +25,6 @@ class HeroinesController < ApplicationController
   private
 
   def heroine_params
-    params.require(:heroine).permit(:name, :super_name)
+    params.require(:heroine).permit(:name, :super_name, :power_id)
   end
 end
