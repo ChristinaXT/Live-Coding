@@ -14,7 +14,7 @@ class HeroinesController < ApplicationController
 
   def create
     @heroine = Heroine.new(heroine_params)
-    if heroine.name.valid?
+    if @heroine.valid?
       @heroine.save
       redirect_to heroines_path
     else
